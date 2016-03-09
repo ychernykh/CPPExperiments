@@ -1,33 +1,46 @@
 #include <iostream>
 #include <typeinfo>
 
+//#define TYPE_DEDUCE
+#include "TD.h"
+
 class Value
 {
-public:
-    int holder[1024] = {0};
 };
 
 template<typename T>
 void funcRef(T& param)
 {
+    TD<T> TType;
+    TD<decltype(param)> paramType;
+
     std::cout << "funcRef<" << typeid(T).name() << ">(" << typeid(param).name() << ")" << std::endl;
 }
 
 template<typename T>
 void funcConstRef(const T& param)
 {
+    TD<T> TType;
+    TD<decltype(param)> paramType;
+
     std::cout << "funcConstRef<" << typeid(T).name() << ">(" << typeid(param).name() << ")" << std::endl;
 }
 
 template<typename T>
 void funcVal(T param)
 {
+    TD<T> TType;
+    TD<decltype(param)> paramType;
+
     std::cout << "funcVal<" << typeid(T).name() << ">(" << typeid(param).name() << ")" << std::endl;
 }
 
 template<typename T>
 void funcURef(T&& param)
 {
+    TD<T> TType;
+    TD<decltype(param)> paramType;
+
     std::cout << "funcURef<" << typeid(T).name() << ">(" << typeid(param).name() << ")" << std::endl;
 }
 
